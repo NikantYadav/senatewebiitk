@@ -1,0 +1,27 @@
+{
+  "main": [
+    {
+      "name": "Members",
+      "url": "/team"
+    },
+    {
+      "name": "Meetings",
+      "url": "/meetings"
+    },
+    {
+      "name": "Constitution",
+      "url": "/constitution"
+    },
+    
+    {
+      "name": "Archives",
+      "url": "/archives"
+    },
+    {
+      "name": "Contact",
+      "url": "/contact"
+    }
+  ],
+  "footer": [
+  ]
+}

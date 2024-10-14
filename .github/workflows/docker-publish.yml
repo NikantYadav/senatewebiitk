@@ -1,0 +1,45 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches:
+      - main  # Change to your primary branch
+  pull_request:
+    branches:
+      - main  # Change to your primary branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Cache Docker layers
+        uses: actions/cache@v2
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
+      - name: Build Docker image
+        run: |
+          docker build . -t my-nextjs-app:latest
+
+      - name: Run Docker container
+        run: |
+          docker run -d -p 3000:3000 --name nextjs-preview my-nextjs-app:latest
+
+      - name: Deploy to Preview Environment
+        run: |
+          # Add commands to deploy your container to your hosting provider or cloud service
+          # For example, if using Docker Hub, you might push the image here
+          # docker tag my-nextjs-app:latest your_dockerhub_username/my-nextjs-app:latest
+          # docker push your_dockerhub_username/my-nextjs-app:latest
+          echo "Deploying the Docker container..."
+          # Add your deployment commands here
