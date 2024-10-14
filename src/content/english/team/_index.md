@@ -1,3 +1,3 @@
 ---
-title: "Students’ Senate Nominees"
+title: "Know Your Senators"
 ---

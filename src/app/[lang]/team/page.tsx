@@ -38,6 +38,8 @@ const Authors = ({ params }: { params: { lang: string } }) => {
           </div>
         </div>
       </section>
+      <h2>Senators for the Tenure 2024-25</h2>
+      
     </>
   );
 };
