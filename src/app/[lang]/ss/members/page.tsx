@@ -1,44 +1,20 @@
-import AuthorCard from "@/components/AuthorCard";
-import Breadcrumbs from "@/components/Breadcrumbs";
-import { getListPage, getSinglePage } from "@/lib/contentParser";
-import { getActiveLanguages, getLanguageObj } from "@/lib/languageParser";
-import PageHeader from "@/partials/PageHeader";
 import SeoMeta from "@/partials/SeoMeta";
-import { Author } from "@/types";
-import path from "path";
+import PageHeader from "@/partials/PageHeader";
 
-const Authors = ({ params }: { params: { lang: string } }) => {
-  const language = getLanguageObj(params.lang);
-  const authorIndex: Author = getListPage(
-    path.join(language.contentDir, "team/_index.md"),
-  );
-  const authors: Author[] = getSinglePage(
-    path.join(language.contentDir, "team"),
-  );
-  const { title, meta_title, description, image } = authorIndex.frontmatter;
+const Authors = () => {
   return (
     <>
       <SeoMeta
-        title={title}
-        meta_title={meta_title}
-        description={description}
-        image={image}
+        title="Know Your Senators"
+        meta_title="Senators IIT Kanpur"
+        description="Meet the current team of the Students' Senate, including office bearers and senators."
+        image="/images/team.jpg"
       />
-      <PageHeader title={title}>
-      </PageHeader>
-      <section className="section-sm pb-0">
-        <div className="container">
-          <div className="row justify-center">
-            {authors.map((author: Author, index: number) => (
-              <div className="mb-14 md:col-6 lg:col-4" key={index}>
-                <AuthorCard data={author} lang={params.lang} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PageHeader title="Know Your Senators" />
+
       <div style={styles.container}>
-            <section style={styles.section}>
+
+        <section style={styles.section}>
                 <h2 style={styles.subheading}>Office Bearers</h2>
                 <ul style={styles.list}>
                     <li style={styles.listItem}><strong>Chairperson, Students' Senate:</strong> Siddhant Jakhotiya (<a href="mailto:chair_ss@iitk.ac.in" style={styles.link}>chair_ss@iitk.ac.in</a>)</li>
@@ -207,12 +183,18 @@ const Authors = ({ params }: { params: { lang: string } }) => {
   );
 };
 
+export default Authors;
+
 const styles = {
   container: {
       maxWidth: '800px',
       margin: '0 auto',
       padding: '20px',
       fontFamily: '"Segoe UI", Tahoma, Geneva, Verdana, sans-serif',
+  },
+  text:{
+    fontSize: '18px',
+    color: '#555',
   },
   heading: {
       textAlign: 'center',
@@ -244,15 +226,3 @@ const styles = {
       textDecoration: 'none',
   },
 };
-
-export default Authors;
-
-// remove dynamicParams
-export const dynamicParams = false;
-
-// generate static params
-export async function generateStaticParams() {
-  return getActiveLanguages().map((language) => ({
-    lang: language.languageCode,
-  }));
-}
