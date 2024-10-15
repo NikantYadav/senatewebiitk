@@ -2,20 +2,20 @@
   "main": [
     {
       "name": "Members",
-      "url": "/members"
+      "url": "/ss/members"
     },
     {
       "name": "Meetings",
-      "url": "/meetings"
+      "url": "/ss/meetings"
     },
     {
       "name": "Constitution",
-      "url": "/constitution"
+      "url": "/ss/constitution"
     },
     
     {
       "name": "Archives",
-      "url": "/archives"
+      "url": "/ss/archives"
     }
   ],
   "footer": [
