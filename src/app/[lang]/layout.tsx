@@ -17,7 +17,7 @@ export default async function Layout({
 
   return (
     <>
-      <TwSizeIndicator />
+      
       <Providers>
         <Header lang={params.lang} menu={menu} />
         <SearchModal lang={params.lang} />

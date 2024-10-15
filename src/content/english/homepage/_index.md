@@ -6,5 +6,5 @@ banner:
   button:
     enable: true
     label: "Learn More About Us"
-    link: "/about"
+    link: "/ss"
 
