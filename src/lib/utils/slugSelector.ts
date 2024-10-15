@@ -9,6 +9,10 @@ export function slugSelector(lang: string, href: string) {
       : lang.replace(/^\/|\/$/g, "");
   href = href.replace(/^\/|\/$/g, "");
 
+  if (href.includes("/meetings/")) {
+    href = `${href}`; 
+  }
+
   if (lang !== "") {
     lang = `/${lang}`;
   }
